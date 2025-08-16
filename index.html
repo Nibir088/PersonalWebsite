@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nibir Chandra Mandal — Personal Website</title>
+  <meta name="description" content="Ph.D. Candidate in Computer Science at UVA specializing in deep learning, computer vision, and multimodal AI. Actively seeking ML/Research Scientist roles.">
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --card: #f8fafc;
+      --border: #e2e8f0;
+      --pill: #eef2ff;
+    }
+    [data-theme="dark"] {
+      --bg: #0b1020;
+      --fg: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --card: #0f172a;
+      --border: #1f2937;
+      --pill: #111827;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      background: var(--bg); color: var(--fg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header {
+      display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+      padding: 16px 0 8px; border-bottom: 1px solid var(--border);
+    }
+    .name { font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -0.01em; }
+    .tag { color: var(--muted); font-weight: 500; margin-top: -6px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--border);
+      border-radius: 999px; background: var(--card); color: var(--fg); font-weight: 600;
+    }
+    .btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+    .btn:hover { filter: brightness(1.02); transform: translateY(-1px); transition: 0.15s ease; text-decoration: none; }
+    .pill { background: var(--pill); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600; }
+    .banner { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 8px; }
+    main { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 24px; }
+    @media (max-width: 880px) { main { grid-template-columns: 1fr; } }
+    section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    h2 { margin: 0 0 12px; font-size: 20px; letter-spacing: 0.2px; }
+    ul { margin: 10px 0 0 20px; padding: 0; }
+    li + li { margin-top: 8px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+    .pub { padding: 12px; border: 1px dashed var(--border); border-radius: 12px; }
+    .muted { color: var(--muted); }
+    footer { border-top: 1px solid var(--border); margin-top: 26px; padding: 16px 0 40px; color: var(--muted); }
+    .toggle { padding: 8px 12px; border: 1px solid var(--border); background: var(--card); border-radius: 10px; cursor: pointer; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--pill); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="name">Nibir Chandra Mandal</div>
+        <div class="tag">Ph.D. Candidate · Computer Science @ UVA · Deep Learning · Computer Vision · Multimodal AI</div>
+        <div class="banner"><span class="pill">Actively seeking Research Scientist / Applied Scientist / ML Engineer roles</span></div>
+        <div class="cta">
+          <a class="btn primary" href="resume.pdf" download>⬇ Download CV</a>
+          <a class="btn" href="mailto:wyr6fx@virginia.edu">✉ Email</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a>
+          <a class="btn" href="https://www.linkedin.com/in/nibir-chandra-mandal/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="btn" href="https://www.researchgate.net/profile/Nibir-Chandra-Mandal" target="_blank" rel="noopener">🧪 ResearchGate</a>
+        </div>
+      </div>
+      <button class="toggle" id="themeToggle" aria-label="Toggle dark mode">🌓 Theme</button>
+    </header>
+
+    <main>
+      <div class="left">
+        <section>
+          <h2>About</h2>
+          <p>I am a Ph.D. Candidate in Computer Science at the University of Virginia, specializing in deep learning, computer vision, and multimodal AI. My work spans generative modeling, vision–language models, and knowledge-informed learning with a focus on building robust, explainable systems.</p>
+          <p>I build datasets and models end-to-end: problem framing, scalable data pipelines, model design, evaluation, and iteration. I’ve published and presented in venues such as NeurIPS, KDD, IJCAI, IAAI, and ISF, and I review for top conferences (KDD 2024/2025).</p>
+          <div class="chips">
+            <span class="pill">Deep Learning</span>
+            <span class="pill">Generative AI</span>
+            <span class="pill">Vision–Language</span>
+            <span class="pill">Segmentation</span>
+            <span class="pill">Knowledge-Informed AI</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Research Interests</h2>
+          <ul>
+            <li><b>Deep Learning</b> — Generative modeling, foundation models, and data‑efficient training methods.</li>
+            <li><b>Computer Vision &amp; Multimodal Learning</b> — Vision–language models, multimodal representation learning, and explainable image segmentation.</li>
+            <li><b>Knowledge‑Informed AI</b> — Integrating symbolic knowledge and constraints into ML for robust and interpretable systems.</li>
+            <li><b>Applied AI</b> — Generalizable frameworks transferable across domains (remote sensing, healthcare, security).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Selected Publications</h2>
+          <div class="grid">
+            <div class="pub">
+              <b>IrrMap: A Large‑Scale Comprehensive Dataset for Irrigation Method Mapping</b><br>
+              <span class="muted">KDD 2025</span>
+            </div>
+            <div class="pub">
+              <b>Knowledge‑Guided Deep Learning for Advanced Irrigation Method Mapping</b><br>
+              <span class="muted">IJCAI 2025</span>
+            </div>
+            <div class="pub">
+              <b>Optim‑WISE: An Ensemble Approach for Probabilistic Forecasts via WIS</b><br>
+              <span class="muted">IAAI 2026 (under review)</span>
+            </div>
+            <div class="pub">
+              <b>Trained Ensemble Models for Epidemic Forecasting (WIS)</b><br>
+              <span class="muted">International Symposium on Forecasting, 2023</span>
+            </div>
+            <div class="pub">
+              <b>IoT Security Aspects in Developer Discussions</b><br>
+              <span class="muted">Information &amp; Software Technology, 2022</span>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:10px;">See full list on <a href="https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        </section>
+      </div>
+
+      <div class="right">
+        <section>
+          <h2>Highlights</h2>
+          <ul>
+            <li>Built and released large‑scale, ML‑ready datasets; led multimodal model development end‑to‑end.</li>
+            <li>Reviewer for <b>KDD 2024/2025</b>; presented at <b>NeurIPS/KDD/IJCAI/ISF</b>.</li>
+            <li>Strong Python/PyTorch/Lightning, data engineering, and experiment tooling.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mentorship</h2>
+          <ul>
+            <li>Mentored <b>two</b> student researchers in machine learning (2023–2024): project scoping, baselines, and publication prep.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <ul>
+            <li>Email: <a href="mailto:wyr6fx@virginia.edu">wyr6fx@virginia.edu</a></li>
+            <li>Location: University of Virginia, Charlottesville, VA</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Nibir Chandra Mandal · Built with simple HTML/CSS · <span class="kbd">index.html</span> + <span class="kbd">styles.css</span></div>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Structured data for better SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nibir Chandra Mandal",
+    "email": "mailto:wyr6fx@virginia.edu",
+    "jobTitle": "Ph.D. Candidate, Computer Science",
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Virginia"},
+    "sameAs": [
+      "https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en",
+      "https://www.linkedin.com/in/nibir-chandra-mandal/",
+      "https://www.researchgate.net/profile/Nibir-Chandra-Mandal"
+    ]
+  }
+  </script>
+</body>
+</html>
