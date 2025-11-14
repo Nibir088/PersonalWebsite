@@ -3,96 +3,173 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nibir Chandra Mandal — NeurIPS & KDD · Multimodal AI</title>
+  <title>Nibir Chandra Mandal — NeurIPS · KDD · Multimodal AI</title>
   <meta name="description" content="Ph.D. Candidate (UVA). NeurIPS & KDD author. Multimodal deep learning, computer vision, vision–language models, and large-scale geospatial AI." />
   <meta name="color-scheme" content="light dark" />
   <meta property="og:title" content="Nibir Chandra Mandal — NeurIPS & KDD" />
-  <meta property="og:description" content="NeurIPS & KDD work on multimodal AI for irrigation mapping and geospatial understanding. IRRISIGHT & IrrMap projects." />
+  <meta property="og:description" content="NeurIPS & KDD work on multimodal AI for irrigation and geospatial understanding. IRRISIGHT & IrrMap projects." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#2563eb" />
 
   <style>
+    /* ------------------ THEME TOKENS ------------------ */
     :root {
-      --bg: #ffffff;
+      --bg: #0b1220;
+      --fg: #e7edf7;
+      --muted: #a8b3c7;
+      --accent: #7aa2ff;
+      --accent-2: #5eead4;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.14);
+      --pill: rgba(255,255,255,0.08);
+      --shadow: 0 8px 28px rgba(0,0,0,.35);
+      --glow: 0 0 0px rgba(122,162,255,0.0);
+      --radius: 16px;
+    }
+    [data-theme="light"] {
+      --bg: #f7f9fc;
       --fg: #0f172a;
       --muted: #475569;
       --accent: #2563eb;
       --accent-2: #0ea5e9;
-      --card: #f8fafc;
-      --border: #e2e8f0;
+      --card: #ffffffd9;
+      --border: #e5e7eb;
       --pill: #eef2ff;
-      --success: #16a34a;
+      --shadow: 0 10px 30px rgba(15,23,42,.08);
+      --glow: 0 0 0px rgba(37,99,235,0.12);
     }
-    [data-theme="dark"] {
-      --bg: #0b1020;
-      --fg: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #60a5fa;
-      --accent-2: #38bdf8;
-      --card: #0f172a;
-      --border: #1f2937;
-      --pill: #111827;
-      --success: #22c55e;
-    }
+
+    /* ------------------ BASE ------------------ */
     * { box-sizing: border-box; }
-    body { margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; background: var(--bg); color: var(--fg); }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
-    header {
-      display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
-      padding: 16px 0 8px; border-bottom: 1px solid var(--border);
+
+    /* ------------------ HERO ------------------ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0 32px;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(1000px 500px at 90% -10%, rgba(94,234,212,.14), transparent 60%);
+      border-bottom: 1px solid var(--border);
     }
-    .name { font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -0.01em; }
-    .tag { color: var(--muted); font-weight: 500; margin-top: -6px; }
-    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .container { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+    }
+    @media (max-width: 880px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    .profile {
+      display: flex; gap: 18px; align-items: center;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px; box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+    .avatar {
+      width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--border); box-shadow: var(--glow);
+    }
+    .name { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+    .tag  { color: var(--muted); margin-top: 4px; }
+    .banner { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      background: var(--pill); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border);
+      font-weight: 700; font-size: 12px; letter-spacing: .25px;
+    }
+    .pill.badge { border-color: transparent; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
     .btn {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--border);
-      border-radius: 999px; background: var(--card); color: var(--fg); font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border: 1px solid var(--border);
+      border-radius: 999px; background: var(--card); color: var(--fg); font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
     }
-    .btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
-    .btn.alt { background: var(--accent-2); color: white; border-color: var(--accent-2); }
-    .btn:hover { filter: brightness(1.02); transform: translateY(-1px); transition: 0.15s ease; text-decoration: none; }
-    .pill { background: var(--pill); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600; }
-    .banner { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 8px; }
-    .badge { border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .2px; }
-    .badge.green { border-color: var(--success); color: var(--success); }
-    main { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 24px; }
-    @media (max-width: 880px) { main { grid-template-columns: 1fr; } }
-    section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.alt     { background: var(--accent-2); color: #052; border-color: var(--accent-2); }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; filter: brightness(1.02); }
+
+    .toggle { padding: 10px 12px; border: 1px solid var(--border); background: var(--card); border-radius: 10px; cursor: pointer; }
+
+    /* ------------------ SECTIONS ------------------ */
+    main { margin-top: 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+    @media (max-width: 880px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    section.card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      animation: rise .45s ease both;
+    }
+    @keyframes rise { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { section.card { animation: none; } }
+
     h2 { margin: 0 0 12px; font-size: 20px; letter-spacing: 0.2px; }
-    ul { margin: 10px 0 0 20px; padding: 0; }
+    p { margin: 0 0 10px; }
+    ul { margin: 8px 0 0 20px; padding: 0; }
     li + li { margin-top: 8px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
-    .pub, .feat {
-      padding: 14px; border: 1px dashed var(--border); border-radius: 12px; background: linear-gradient(180deg, rgba(37,99,235,0.04), transparent);
+
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
-    .muted { color: var(--muted); }
-    footer { border-top: 1px solid var(--border); margin-top: 26px; padding: 16px 0 40px; color: var(--muted); }
-    .toggle { padding: 8px 12px; border: 1px solid var(--border); background: var(--card); border-radius: 10px; cursor: pointer; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--pill); }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+    .feat, .pub {
+      padding: 14px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(122,162,255,0.10), transparent 80%);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .feat:hover, .pub:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--accent); }
+    .feat h3 { margin: 0 0 6px; font-size: 17px; }
+    .mini { font-size: 13px; color: var(--muted); }
+    .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .feat h3 { margin: 0 0 4px; font-size: 17px; }
-    .mini { font-size: 13px; }
-    .links { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+
+    footer {
+      margin: 36px 0 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--pill);
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div style="display:flex; gap:16px; align-items:center;">
-        <img src="1000012269.JPEG" alt="Portrait of Nibir Chandra Mandal"
-             style="width:96px; height:96px; border-radius:50%; object-fit:cover; border:2px solid var(--border);" />
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container hero-inner">
+      <div class="profile">
+        <img class="avatar" src="1000012269.JPEG" alt="Portrait of Nibir Chandra Mandal" />
         <div>
-          <div class="name">Nibir Chandra Mandal</div>
+          <h1 class="name">Nibir Chandra Mandal</h1>
           <div class="tag">Ph.D. Candidate · Computer Science @ UVA · Multimodal AI · CV · VLMs</div>
           <div class="banner">
             <span class="pill">Actively seeking Research Scientist / Applied Scientist / ML Engineer roles</span>
-            <span class="badge green">NeurIPS</span>
-            <span class="badge green">KDD</span>
+            <span class="pill badge">NeurIPS</span>
+            <span class="pill badge">KDD</span>
           </div>
-          <div class="cta" aria-label="Quick links">
+          <div class="actions" aria-label="Quick links">
             <a class="btn primary" href="resume.pdf" download>⬇ Download CV</a>
             <a class="btn" href="mailto:wyr6fx@virginia.edu">✉ Email</a>
             <a class="btn" href="https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a>
@@ -102,25 +179,28 @@
         </div>
       </div>
       <button class="toggle" id="themeToggle" aria-label="Toggle dark mode">🌓 Theme</button>
-    </header>
+    </div>
+  </div>
 
-    <main>
+  <!-- MAIN -->
+  <main class="container" role="main">
+    <div class="grid-2">
       <div class="left">
-        <section>
+        <section class="card">
           <h2>Featured — NeurIPS & KDD</h2>
           <div class="grid">
             <div class="feat">
               <h3>IRRISIGHT — NeurIPS 2025</h3>
-              <p class="mini muted">Large-scale multimodal dataset & benchmark for irrigation classification and agricultural water management across 20+ U.S. states (1.4M+ ML-ready patches with structured soil/hydrology/land-use/climate prompts).</p>
+              <p class="mini">Large-scale multimodal dataset & benchmark for irrigation classification and agricultural water management across 20+ U.S. states (1.4M+ ML-ready patches with structured soil/hydrology/land-use/climate prompts).</p>
               <div class="links">
-                <a class="btn alt" href="https://github.com/Nibir088/IRRISIGHT" target="_blank" rel="noopener">Code / Data</a>
-                <a class="btn" href="#" aria-label="Paper link">Paper</a>
+                <a class="btn" href="https://github.com/Nibir088/IRRISIGHT" target="_blank" rel="noopener">Code / Data</a>
+                <a class="btn alt" href="#" aria-label="Paper link">Paper</a>
                 <span class="pill">Multimodal · VLMs</span>
               </div>
             </div>
             <div class="feat">
               <h3>IrrMap — KDD 2025</h3>
-              <p class="mini muted">National-scale dataset & benchmark for irrigation method mapping using remote sensing; end-to-end pipeline, evaluation suite, and baselines for multimodal geospatial learning.</p>
+              <p class="mini">National-scale dataset & benchmark for irrigation method mapping using remote sensing; end-to-end pipeline, evaluation suite, and baselines for multimodal geospatial learning.</p>
               <div class="links">
                 <a class="btn" href="#" aria-label="Project page">Project</a>
                 <a class="btn alt" href="#" aria-label="Dataset link">Dataset</a>
@@ -130,7 +210,7 @@
           </div>
         </section>
 
-        <section>
+        <section class="card">
           <h2>About</h2>
           <p>I am a Ph.D. Candidate at the University of Virginia working on multimodal deep learning, computer vision, and vision–language models. I build end-to-end systems—data pipelines → model design → evaluation—aimed at robust, explainable geospatial AI.</p>
           <p>My recent work centers on <b>IRRISIGHT (NeurIPS)</b> and <b>IrrMap (KDD)</b>, where we combine satellite imagery with structured knowledge to advance irrigation mapping and agricultural monitoring at national scale.</p>
@@ -143,36 +223,36 @@
           </div>
         </section>
 
-        <section>
+        <section class="card">
           <h2>Selected Publications</h2>
           <div class="grid">
             <div class="pub">
               <b>IRRISIGHT: Multimodal Dataset & Pipeline for Irrigation & Water Management</b><br />
-              <span class="muted">NeurIPS 2025</span>
+              <span class="mini">NeurIPS 2025</span>
             </div>
             <div class="pub">
               <b>IrrMap: A Comprehensive Dataset for Irrigation Method Mapping</b><br />
-              <span class="muted">KDD 2025</span>
+              <span class="mini">KDD 2025</span>
             </div>
             <div class="pub">
               <b>KIIM: Knowledge-Guided Deep Learning for Irrigation Mapping</b><br />
-              <span class="muted">IJCAI 2025</span>
+              <span class="mini">IJCAI 2025</span>
             </div>
             <div class="pub">
               <b>PRISM-CAFO: Prior-Conditioned Remote-Sensing Infrastructure Mapping</b><br />
-              <span class="muted">WACV 2026</span>
+              <span class="mini">WACV 2026</span>
             </div>
             <div class="pub">
               <b>IoT Security Aspects in Developer Discussions</b><br />
-              <span class="muted">Information &amp; Software Technology</span>
+              <span class="mini">Information &amp; Software Technology</span>
             </div>
           </div>
-          <p class="muted" style="margin-top:10px;">Full list on <a href="https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+          <p class="mini" style="margin-top:10px;">Full list on <a href="https://scholar.google.com/citations?user=MipC9EYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
         </section>
       </div>
 
       <div class="right">
-        <section>
+        <section class="card">
           <h2>Highlights for Recruiters</h2>
           <ul>
             <li>NeurIPS & KDD publications; led large-scale multimodal datasets (1M+ patches) and model pipelines.</li>
@@ -181,7 +261,7 @@
           </ul>
         </section>
 
-        <section>
+        <section class="card">
           <h2>Mentorship & Service</h2>
           <ul>
             <li>Mentored two student researchers (2025) on multimodal geospatial AI.</li>
@@ -189,7 +269,7 @@
           </ul>
         </section>
 
-        <section>
+        <section class="card">
           <h2>Contact</h2>
           <ul>
             <li>Email: <a href="mailto:wyr6fx@virginia.edu">wyr6fx@virginia.edu</a></li>
@@ -197,12 +277,12 @@
           </ul>
         </section>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer>
-      <div>© <span id="year"></span> Nibir Chandra Mandal · Built with simple HTML/CSS · <span class="kbd">index.html</span></div>
-    </footer>
-  </div>
+  <footer class="container">
+    <div>© <span id="year"></span> Nibir Chandra Mandal · Built with simple HTML/CSS · <span class="kbd">index.html</span></div>
+  </footer>
 
   <script>
     // Theme toggle
