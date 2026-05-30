@@ -14,14 +14,20 @@ A super-simple personal site built with static HTML/CSS. No build tools or frame
 ## Free Hosting Options
 
 ### Option A: GitHub Pages (no ads, free)
-1. Create a new repository on GitHub, e.g., `nibir-site`.
-2. Upload all files (`index.html`, `styles.css`, and `resume.pdf`).
+1. Create a new GitHub repository for this site.
+2. Upload `index.html`, `styles.css`, and `resume.pdf` to the repository root.
 3. In **Settings → Pages**, set:
    - **Source**: `Deploy from a branch`
    - **Branch**: `main` (root)
-4. Your site will appear at `https://<your-username>.github.io/nibir-site/`
+4. Save and wait a few moments. Your site will appear at `https://<your-username>.github.io/<repo-name>/`.
 
-**Pro Tip:** If you name the repo `<your-username>.github.io`, Pages will host at the root domain.
+**Pro Tip:** If you name the repo `<your-username>.github.io`, the site will be hosted at `https://<your-username>.github.io/`.
+
+### Preparing this repo for GitHub Pages
+- Keep `index.html` at the repository root.
+- Ensure `styles.css` is present and referenced from `index.html`.
+- Add `resume.pdf` if you want the CV download button to work.
+- If you want a custom domain later, add a `CNAME` file with the domain name in it.
 
 ### Option B: Netlify (drop & deploy)
 1. Go to https://app.netlify.com/drop and drag the folder onto the page.
